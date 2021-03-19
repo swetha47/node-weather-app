@@ -8,6 +8,7 @@ const publicDirectory = path.join(__dirname, "../public");
 const viewDirectory = path.join(__dirname, "../templates/views");
 const partialsDirectoty = path.join(__dirname, "../templates/partials");
 const app = express();
+const port = process.env.PORT || 3000;
 
 app.set("view engine", "hbs");
 app.set("views", viewDirectory);
@@ -73,6 +74,6 @@ app.get("*", (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log("The server is up and running on 3000");
+app.listen(port, () => {
+  console.log(`The server is up and running on ${port}`);
 });

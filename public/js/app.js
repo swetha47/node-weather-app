@@ -12,14 +12,12 @@ weatherform.addEventListener("submit", (e) => {
     messageTwo.textContent = "";
     console.log("Please enter an address.");
   } else {
-    fetch(`http://localhost:3000/weather?address=${address}`).then(
-      (response) => {
-        response.json().then((data) => {
-          messageOne.textContent = "Place: " + data.place;
-          messageTwo.textContent = "Temperature: " + data.temperature;
-          console.log(data);
-        });
-      }
-    );
+    fetch(`/weather?address=${address}`).then((response) => {
+      response.json().then((data) => {
+        messageOne.textContent = "Place: " + data.place;
+        messageTwo.textContent = "Temperature: " + data.temperature;
+        console.log(data);
+      });
+    });
   }
 });
