@@ -45,16 +45,26 @@ app.get("/weather", (req, res) => {
       if (error) {
         res.send(error);
       } else {
-        forecast(latitude, longitude, (error, { temperature }) => {
-          if (error) {
-            res.send(error);
-          } else {
-            res.send({
-              place: place,
-              temperature: temperature,
-            });
+        forecast(
+          latitude,
+          longitude,
+          (
+            error,
+            { temperature, description, feelslike, humidity, visibility }
+          ) => {
+            if (error) {
+              res.send(error);
+            } else {
+              res.send({
+                temperature: temperature,
+                description: description,
+                feelslike: feelslike,
+                humidity: humidity,
+                visibility: visibility,
+              });
+            }
           }
-        });
+        );
       }
     });
   }

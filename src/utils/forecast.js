@@ -11,10 +11,13 @@ const forecast = (latitude, longitude, callback) => {
     } else if (body.current === null) {
       callback("Unable to get weather information", undefined);
     } else {
+      console.log(body.current.weather_descriptions[0]);
       callback(undefined, {
         temperature: body.current.temperature,
         description: body.current.weather_descriptions[0],
         feelslike: body.current.feelslike,
+        humidity: body.current.humidity,
+        visibility: body.current.visibility,
       });
     }
   });

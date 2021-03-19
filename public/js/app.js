@@ -15,7 +15,17 @@ weatherform.addEventListener("submit", (e) => {
     fetch(`/weather?address=${address}`).then((response) => {
       response.json().then((data) => {
         messageOne.textContent = "Place: " + data.place;
-        messageTwo.textContent = "Temperature: " + data.temperature;
+        messageTwo.textContent =
+          data.description +
+          " with temperature of " +
+          data.temperature +
+          "F. Feels like " +
+          data.feelslike +
+          "F with humidity of " +
+          data.humidity +
+          " and visibility " +
+          data.visibility +
+          ".";
         console.log(data);
       });
     });
